@@ -4,7 +4,11 @@ var app = express();
 
 app.get('/', function (req, res) {
     const maskedCPF = CPFHelper.generateCPF(true);
-    res.send(maskedCPF);
+    const CPF = CPFHelper.generateCPF(false);
+    res.json({
+        cpf: CPF,
+        withMask: maskedCPF
+    });
 });
 
 var listener = app.listen(3000, function (req, res) {
