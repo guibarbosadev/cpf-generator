@@ -23,13 +23,6 @@ function generateRandomNumbers(numbersToGenerate = 1) {
     return randomNumbers;
 }
 
-function maskCPF(CPF = '') {
-    const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/;
-    const withMask = CPF.replace(mask, '$1.$2.$3-$4');
-
-    return withMask;
-}
-
 module.exports = {
     generateCPF: function (withMask = false) {
         let CPF = generateRandomNumbers(9);
@@ -43,5 +36,12 @@ module.exports = {
         }
 
         return CPF;
+    },
+
+    maskCPF: function (CPF = '') {
+        const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/;
+        const withMask = CPF.replace(mask, '$1.$2.$3-$4');
+    
+        return withMask;
     }
 }
