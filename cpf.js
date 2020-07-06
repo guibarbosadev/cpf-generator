@@ -13,14 +13,9 @@ function validatorDigit(CPF) {
 }
 
 function generateRandomNumbers(numbersToGenerate = 1) {
-    const randomNumbers = [];
-
-    for (let i = 0; i < numbersToGenerate; i++) {
-        const randomNumber = parseInt(Math.random() * 10);
-        randomNumbers.push(randomNumber);
-    }
-
-    return randomNumbers;
+    return Array.from({ length: numbersToGenerate }, () => {
+        return parseInt(Math.random() * 10);
+    });
 }
 
 module.exports = {
@@ -41,7 +36,7 @@ module.exports = {
     maskCPF: function (CPF = '') {
         const mask = /(\d{3})(\d{3})(\d{3})(\d{2})/;
         const withMask = CPF.replace(mask, '$1.$2.$3-$4');
-    
+
         return withMask;
     }
 }
