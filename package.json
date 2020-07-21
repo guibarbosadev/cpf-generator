@@ -5,7 +5,7 @@
     "author": "Guilherme Barbosa Pereira <guilherme.barbosapereira@outlook.com>",
     "license": "MIT",
     "scripts": {
-        "serve": "nodemon app.js",
+        "dev": "nodemon app.js",
         "start": "node app.js"
     },
     "dependencies": {
