@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "exec": "node-sass main.scss -o public/ & node app.js",
+    "ignore": ["node_modules"],
+    "ext": "js pug scss"
+}
