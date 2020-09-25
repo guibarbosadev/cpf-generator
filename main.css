@@ -1,62 +1,55 @@
+:root {
+    --primaryColor: #87f1ff;
+    --dark: #222;
+}
+
+
 * {
     font-family: 'Noto Sans', sans serif;
     box-sizing: border-box;
 }
 
-body {
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    grid-row-gap: 60px;
-    background-color: #87f1ff;
-}
-
-h1 {
-    font-size: 84px;
-    margin: 30px 0 0 0;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
 }
 
 .container {
-    display: grid;
-    grid-row-gap: 20px;
-}
-
-.container .item {
+    align-items: center;
+    background-color: var(--primaryColor);
     cursor: pointer;
-    position: relative;
-    width: 300px;
-}
-
-.container .item .icon {
-    height: 25px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 25px;
-    color: #555;
-}
-
-.container .item button {
-    margin-top: 20px;
-}
-
-.container .item input {
-    border: 2px solid #bfbbbb;
-    cursor: unset;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 22px;
-    background-color: #ffffff;
-    color: #111;
+    display: grid;
+    height: 100%;
+    justify-content: center;
     width: 100%;
 }
 
-.container .item input:hover,
-.container .item input:focus {
-    border-color: #8e8a8a;
+#textContainer,
+.toast {
+    color: var(--dark);
 }
 
-.container .item input:focus {
-    outline: none;
+#textContainer {
+    font-size: 72px;
+}
+
+
+#toast { 
+    background-color: white;
+    border-radius: 12px;
+    bottom: -40px;
+    box-shadow: 1px 2px 5px var(--dark); 
+    color: #222;
+    left: 50%;
+    padding: 5px 25px;
+    position: absolute;
+    transform: translateX(-50%);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#toast.visible {
+    bottom: 20px;
 }
