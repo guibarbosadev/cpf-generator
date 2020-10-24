@@ -1,45 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./main.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <script src="./cpf.js"></script>
-    <script src="./toast.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="./main.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet">
+        <script type="module" src="index.js"></script>
+    </head>
 
-<body>
-    <div class="container">
-        <span id="textContainer" />
-    </div>
-    <div id="toast" />
-    <script>
-        (function IFFE() {
-            const container = document.querySelector('.container');
-            const textContainer = document.getElementById('textContainer');
-            const CPF = CPFHelper.generateCPF();
-
-            textContainer.textContent = CPF;
-
-            container.addEventListener('click', function () {
-                const textarea = document.createElement('textarea');
-
-
-                textarea.value = CPF;
-                textarea.style.position = 'absolute';
-                textarea.style.left = '-99999999px';
-                textarea.setAttribute('readonly', '');
-
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                ToastHelper.show('Copiado!');
-            });
-        })();
-    </script>
-</body>
-
+    <body>
+        <div class="container">
+            <span id="textContainer" />
+        </div>
+        <div id="toast" />
+    </body>
 </html>
