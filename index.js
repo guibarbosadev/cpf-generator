@@ -1,23 +1,21 @@
-import { show, hide } from './toast.js';
 import { generateCPF } from './cpf.js';
+import { copyToClipboard } from './helpers.js';
 
-const container = document.querySelector('.container');
 const textContainer = document.getElementById('textContainer');
+const { body } = document;
 const CPF = generateCPF();
+const triggerKeys = ['c'];
 
 textContainer.textContent = CPF;
 
-container.addEventListener('click', function () {
-    const textarea = document.createElement('textarea');
+function triggerKeysListenr({ key = "" }) {
+    const loweredCase = key.toLowerCase();
+    const shouldCopy = triggerKeys.includes(loweredCase)
+    
+    if(shouldCopy) {
+        copyToClipboard(CPF);
+    }
+}
 
-    textarea.value = CPF;
-    textarea.style.position = 'absolute';
-    textarea.style.left = '-99999999px';
-    textarea.setAttribute('readonly', '');
-
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    show('Copiado!');
-});
+body.addEventListener('click', () => copyToClipboard(CPF));
+body.addEventListener('keyup', triggerKeysListenr);
