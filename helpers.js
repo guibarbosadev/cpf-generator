@@ -15,3 +15,12 @@ export function copyToClipboard(text = "") {
 
     show('Copiado!');
 }
+
+export function triggerableKeyListener(key, triggerableKeys, CPF) {
+    const loweredCase = key.toLowerCase();
+    const shouldCopy = triggerableKeys.includes(loweredCase)
+    
+    if(shouldCopy) {
+        copyToClipboard(CPF);
+    }
+}
