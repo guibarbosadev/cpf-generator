@@ -1,12 +1,12 @@
 :root {
-    --primaryColor: #87f1ff;
+    --bgColor: #87f1ff;
     --dark: #222;
 }
-
 
 * {
     font-family: 'Helvetica', sans serif;
     box-sizing: border-box;
+    color: --dark;    
 }
 
 html, body {
@@ -18,7 +18,7 @@ html, body {
 
 .container {
     align-items: center;
-    background-color: var(--primaryColor);
+    background-color: var(--bgColor);
     cursor: pointer;
     display: grid;
     height: 100%;
@@ -26,17 +26,14 @@ html, body {
     width: 100%;
 }
 
-#textContainer,
-.toast {
-    color: var(--dark);
-}
-
 #textContainer {
     font-size: 72px;
+    font-weight: normal;
 }
 
 
 #toast { 
+    display: none;
     background-color: white;
     border-radius: 12px;
     bottom: -40px;
@@ -46,10 +43,38 @@ html, body {
     padding: 5px 25px;
     position: absolute;
     transform: translateX(-50%);
-    transition-property: all;
-    transition-duration: 0.3s;
 }
 
 #toast.visible {
+    display: block;
+    animation-name: appear;
+    animation-duration: 0.4s;
     bottom: 20px;
+}
+
+#toast.visible.disappearing {
+    animation-name: disappear;
+    animation-duration: 0.2s;
+}
+
+@keyframes appear {
+    from {
+        bottom: 0px;
+    }
+
+    to {
+        bottom: 20px;
+    }
+}
+
+@keyframes disappear {
+    from {
+        display: 20px;
+    }
+
+    to {
+      bottom: -20px;
+      padding: 5px 0;
+      font-size: 5px;
+    }
 }

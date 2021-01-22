@@ -8,6 +8,14 @@ export function show(text = '', duration = 1500) {
 
 export function hide() {
     const toast = document.getElementById('toast');
-    toast.textContent = '';
-    toast.classList.remove('visible');
+
+    if (toast) {
+        toast.classList.add('disappearing');
+        
+        setTimeout(() => {
+            toast.textContent = '';
+            toast.classList.remove('visible');
+            toast.classList.remove('disappearing');
+        }, 200);
+    }
 }
