@@ -1,6 +1,6 @@
 import { show } from './toast.js';
 
-export function copyToClipboard(text = "") {
+export function copyToClipboard(text = '') {
     const textarea = document.createElement('textarea');
 
     textarea.value = text;
@@ -16,11 +16,15 @@ export function copyToClipboard(text = "") {
     show('Copiado!');
 }
 
-export function triggerableKeyListener(key, triggerableKeys, CPF) {
-    const loweredCase = key.toLowerCase();
-    const shouldCopy = triggerableKeys.includes(loweredCase)
-    
-    if(shouldCopy) {
-        copyToClipboard(CPF);
+export function triggerableKeyListener(event, triggerableKeys, CPF) {
+    const { key, ctrlKey } = event;
+
+    if (ctrlKey) {
+        const loweredCase = key.toLowerCase();
+        const shouldCopy = triggerableKeys.includes(loweredCase);
+
+        if (shouldCopy) {
+            copyToClipboard(CPF);
+        }
     }
 }
