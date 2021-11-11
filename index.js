@@ -3,12 +3,12 @@ import { copyToClipboard, triggerableKeyListener } from './helpers.js';
 import { triggerableKeys } from './config.js';
 
 const textContainer = document.getElementById('textContainer');
-const { body } = document;
+const copyButton = document.getElementById('copyButton');
 const CPF = generateCPF();
 
 textContainer.textContent = CPF;
 
-body.addEventListener('click', () => copyToClipboard(CPF));
-body.addEventListener('keyup', (event) =>
+copyButton.addEventListener('click', () => copyToClipboard(CPF));
+document.addEventListener('keyup', (event) =>
     triggerableKeyListener(event, triggerableKeys, CPF)
 );

@@ -1,4 +1,4 @@
-export function show(text = '', duration = 1500) {
+export function show(text = '', duration = 2000) {
     const toast = document.getElementById('toast');
     toast.textContent = text;
     toast.classList.add('visible');
@@ -11,7 +11,7 @@ export function hide() {
 
     if (toast) {
         toast.classList.add('disappearing');
-        
+
         setTimeout(() => {
             toast.textContent = '';
             toast.classList.remove('visible');
